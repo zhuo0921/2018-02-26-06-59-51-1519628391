@@ -32,7 +32,7 @@ describe("Person", () => {
         });
 
         it("should have field name, age and class number", () => {
-            const student = new Student(1, "Tom", 21, klass);
+            const student = new Student({number: 1, name: "Tom", age: 21, klass: klass});
             expect(student.name).to.equal("Tom");
             expect(student.age).to.equal(21);
             expect(student.klass).to.equal(klass);
@@ -40,14 +40,14 @@ describe("Person", () => {
 
         describe("#introduce", () => {
             it("should overwrite Person introduce, introduce with name, age and class number", () => {
-                const student = new Student(1, "Tom", 21, klass);
+                const student = new Student({number: 1, name: "Tom", age: 21, klass: klass});
                 const introduce = student.introduce();
                 expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Student. I am at Class 2.");
             });
 
             it("should print Leader role, given student is leader", () => {
                 const klass = new Class(2);
-                const student = new Student(1, "Tom", 21, klass);
+                const student = new Student({number: 1, name: "Tom", age: 21, klass: klass});
 
                 klass.assignLeader(student);
                 const introduce = student.introduce();
@@ -65,7 +65,7 @@ describe("Person", () => {
         });
 
         it("should have field name, age and class number", () => {
-            const teacher = new Teacher(1, "Tom", 21, klasses);
+            const teacher = new Teacher({number: 1, name: "Tom", age: 21, klasses: klasses});
             expect(teacher.name).to.equal("Tom");
             expect(teacher.age).to.equal(21);
             expect(teacher.klasses.length).to.equal(klasses.length);
@@ -75,13 +75,13 @@ describe("Person", () => {
 
         describe("#introduce", () => {
             it("should overwrite Person introduce, introduce with name, age and class number, given teacher have class", () => {
-                const teacher = new Teacher(1, "Tom", 21, klasses);
+                const teacher = new Teacher({number: 1, name: "Tom", age: 21, klasses: klasses});
                 const introduce = teacher.introduce();
                 expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2, 3.");
             });
 
             it("should overwrite Person introduce, introduce with name, age and class number, given teacher have no class", () => {
-                const teacher = new Teacher(1, "Tom", 21);
+                const teacher = new Teacher({number: 1, name: "Tom", age: 21});
                 const introduce = teacher.introduce();
                 expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Teacher. I teach No Class.");
             });
@@ -116,7 +116,7 @@ describe("Class", () => {
 
         it("should assign student as Leader, given student is class member", () => {
             const klass = new Class(2);
-            const student = new Student(1, "Jerry", 21, klass);
+            const student = new Student({number: 1, name: "Jerry", age: 21, klass: klass});
 
             klass.assignLeader(student);
 
@@ -126,7 +126,7 @@ describe("Class", () => {
         it("should not assign student as Leader, given student is not class member", () => {
             const klass = new Class(2);
             const otherKlass = new Class(3);
-            const student = new Student(1, "Jerry", 21, otherKlass);
+            const student = new Student({number: 1, name: "Jerry", age: 21, klass: otherKlass});
 
             klass.assignLeader(student);
 
@@ -136,7 +136,7 @@ describe("Class", () => {
         it("should not assign student as Leader, given student is not class member", () => {
             const klass = new Class(2);
             const otherKlass = new Class(3);
-            const student = new Student(1, "Jerry", 21, otherKlass);
+            const student = new Student({number: 1, name: "Jerry", age: 21, klass: otherKlass});
 
             klass.assignLeader(student);
 
@@ -152,7 +152,7 @@ describe("Class", () => {
             const klass = new Class(2);
             const otherKlass = new Class(3);
 
-            const student = new Student(1, "Jerry", 21, otherKlass);
+            const student = new Student({number: 1, name: "Jerry", age: 21, klass: otherKlass});
 
             expect(student.klass).to.equal(otherKlass);
 

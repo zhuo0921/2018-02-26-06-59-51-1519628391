@@ -24,7 +24,6 @@ describe("Person", () => {
 
     describe("Student", () => {
         let klass;
-
         before(() => {
            klass = new Class(2); 
         });
